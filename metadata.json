@@ -1,0 +1,8 @@
+{
+  "name": "Mirova AI - Multimodal Suite",
+  "description": "A futuristic robotic assistant supporting live speech, advanced document analysis, and high-fidelity image generation.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

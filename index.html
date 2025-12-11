@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Mirova AI - Neural Hub</title>
+    
+    <!-- Base path safety for standard deployments -->
+    <base href="./" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+      html, body {
+        margin: 0;
+        background-color: #000;
+        color: #fff;
+        font-family: 'Rajdhani', sans-serif;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+      }
+      .font-display { font-family: 'Orbitron', sans-serif; }
+      
+      /* Smooth intro transition */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+      
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+      /* Visual loader to prevent confusion during blank page state */
+      #fallback-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #000;
+        z-index: 1000;
+        transition: opacity 0.5s ease;
+      }
+      #fallback-loader.hidden { opacity: 0; pointer-events: none; }
+    </style>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+        "react/": "https://aistudiocdn.com/react@^19.2.1/",
+        "react": "https://aistudiocdn.com/react@^19.2.1",
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Manual loader that is removed by React once App mounts -->
+    <div id="fallback-loader">
+      <div style="width: 40px; height: 40px; border: 2px solid #111; border-top-color: #22d3ee; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+      <p style="margin-top: 20px; font-family: 'Orbitron', sans-serif; font-size: 10px; color: #444; letter-spacing: 4px; text-transform: uppercase;">Booting Neural Link...</p>
+    </div>
+
+    <div id="root" class="w-full h-full"></div>
+
+    <script type="module" src="index.tsx"></script>
+
+    <style>
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+  </body>
+</html>
